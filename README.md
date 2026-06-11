@@ -2,7 +2,7 @@
 
 # 🌾 BreedLens
 
-**Sorghum trait estimation from phone photos**
+**Image-based Sorghum trait estimation from mobile phone**
 
 Automatic sorghum grain detection and counting with **YOLOv11**, mass and yield
 estimation, and local agronomic analysis powered by a vision-language model
@@ -18,7 +18,7 @@ estimation, and local agronomic analysis powered by a vision-language model
 
 ---
 
-## 🌍 Why BreedLens matters
+##  Why BreedLens matters
 
 Measuring grain number and estimating yield is one of the most time-consuming
 steps in sorghum breeding programs. It is traditionally done by hand  counting
@@ -52,13 +52,13 @@ This pairing is what makes BreedLens novel. The detection model answers
 **"how many?"** with numerical rigor, while the vision-language model answers
 **"what does this mean agronomically?"** in plain language a breeder or
 technician can act on. Instead of a raw count, the user gets a measurement **and**
-an expert-style reading of the sample — and because both models run locally
+an expert-style reading of the sample  and because both models run locally
 through Ollama and YOLO, it all works in the field, without internet, and without
 sending a single image to the cloud.
 
 ---
 
-## 📋 Overview
+## Overview
 
 **BreedLens** is a local web application designed for breeders, laboratory
 technicians, and researchers working on sorghum. From a single phone photo
@@ -69,7 +69,7 @@ technicians, and researchers working on sorghum. From a single phone photo
 - generates a natural-language **agronomic analysis** (English or French);
 - processes images in **batch** and exports a ready-to-use **CSV**.
 
-> 🔒 **100% local** — detection and analysis run on your own machine. No image
+> 🔒 **100% local**  detection and analysis run on your own machine. No image
 > is ever sent to a third-party server.
 
 ---
@@ -87,7 +87,7 @@ technicians, and researchers working on sorghum. From a single phone photo
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The application relies on three local services that communicate with each other:
 
@@ -108,13 +108,13 @@ The application relies on three local services that communicate with each other:
    predict.py  +  YOLOv11 model (.pt)
 ```
 
-| Component         | Role                                                            | Port    |
-|-------------------|-----------------------------------------------------------------|---------|
-| `index.html`      | Web interface (capture, batch, result display)                  | —       |
-| `server.js`       | Node server: serves the UI, relays to YOLO, calls Ollama        | `3001`  |
-| `yolo_server.py`  | Flask server: YOLO detection (single and batch)                 | `5001`  |
-| `predict.py`      | YOLOv11 inference script (single detection)                     | —       |
-| Ollama            | Vision-language model for the agronomic analysis                | `11434` |
+| Component        | Role                                                     | Port    |
+| ---------------- | -------------------------------------------------------- | ------- |
+| `index.html`     | Web interface (capture, batch, result display)           |         |
+| `server.js`      | Node server: serves the UI, relays to YOLO, calls Ollama | `3001`  |
+| `yolo_server.py` | Flask server: YOLO detection (single and batch)          | `5001`  |
+| `predict.py`     | YOLOv11 inference script (single detection)              |         |
+| Ollama           | Vision-language model for the agronomic analysis         | `11434` |
 
 > ℹ️ Batch detection loads the YOLO model **once** in memory for the entire
 > batch (faster than relaunching `predict.py` per image), while keeping the same
@@ -131,12 +131,13 @@ The application relies on three local services that communicate with each other:
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/mmbaye/breedlens.git
+git clone https://github.com/mmbaye/breedlens
+
 cd breedlens
 ```
 
@@ -172,7 +173,7 @@ Copy your weights file (`.pt`) to a known location, then set its path in
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### `yolo_server.py`
 
@@ -257,7 +258,7 @@ chmod +x start_yolo.sh
 
 ---
 
-## 📖 Usage
+## Usage
 
 ### Single detection
 
@@ -280,7 +281,7 @@ chmod +x start_yolo.sh
 
 ---
 
-## 🤖 Agronomic analysis prompt
+## Agronomic analysis prompt
 
 When you click **Detect & estimate**, BreedLens sends the **annotated image**
 plus the detection figures to the Qwen3-VL vision-language model through Ollama.
@@ -323,7 +324,7 @@ Agronomic analysis requested:
 
 ---
 
-## 📊 CSV format (batch)
+## CSV format (batch)
 
 One row per image:
 
@@ -341,7 +342,7 @@ One row per image:
 
 ---
 
-## 📱 Using from an iPad / phone
+## Using from an iPad / phone
 
 The interface is accessible from a tablet or phone connected to the **same
 Wi-Fi network** as the machine running the servers (all computation stays on the
@@ -363,7 +364,7 @@ machine).
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 | Symptom                                             | Likely cause / fix                                                               |
 |-----------------------------------------------------|----------------------------------------------------------------------------------|
@@ -376,7 +377,7 @@ machine).
 
 ---
 
-## 📁 Project structure
+## Project structure
 
 ```
 breedlens/
@@ -391,7 +392,7 @@ breedlens/
 
 ---
 
-## 📝 Notes
+## Notes
 
 - No image is transmitted to an external server: detection (YOLO) and analysis
   (Ollama) run locally.
@@ -401,7 +402,7 @@ breedlens/
 
 ---
 
-## 📄 License
+##  License
 
 Distributed under the **MIT** License. See the [`LICENSE`](LICENSE) file for
 details.
@@ -409,7 +410,8 @@ details.
 ---
 
 <div align="center">
+Built for sorghum research and breeding program at ISRA/CERAAS and CNRA of Bambey with the support of ARTEMIS project 🌾
 
-Built for sorghum research and variety selection 🌾
+Institut Senegalais de Recherches Agricoles(ISRA); CERAAS 
 
 </div>
